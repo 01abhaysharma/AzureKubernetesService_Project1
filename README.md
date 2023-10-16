@@ -4,14 +4,30 @@
 
 # Step 1: Provision Azure Kubernetes Service cluster using Azure portal
 
-1. Login to Azure portal: https://portal.azure.com and click on create a resource.
-2. Click on Containers. All the containers based services are listed here.
-3. Click on Kubernetes service to create an Azure Kubernetes Service cluster.
-4. Select subscription, provide resource group name, AKS cluster name, availability zone, region, pricing tiers, version details, authentication details, etc. You may keep some of the details as default.
-5. Click on Next: Node pools > to go to Node pool section to configure node pools. A default node pool will be created. You may add additional node pools here.
+Watch this hands-on video here: https://youtu.be/rAjS0wGuDwc
 
-That's it! AKS cluster is now created.
+# Step 2: Create and Containerize .NET Core application
 
-Watch this hands-on video here:
+Watch this hands-on video here: https://youtu.be/yufI4K4nk34
+
+# Step 3: Create Azure Container Registery and enable admin user
+
+Watch this hands-on video here: https://youtu.be/fLM3xz5I3wM
+
+# Step 4: Push Containerized application to Azure Container Registry
+
+Watch this hands-on video here: https://youtu.be/T9_Ux886LBQ
+
+# Step 5: Azure Container Registry - Repo error - Unauthorized 401 - resolved.
+
+Watch this hands-on video here: https://youtu.be/v7dyscQvjLY
+
+# Step 6: Deploy to AKS Cluster using Kubectl command
+
+1. Create Kubernetes manifest (YAML)
+2. Integrate Azure Kubernetes Service with Azure Container Registry
+3. Deploy the manifest file to AKS cluster using Kubectl command
+   
+Watch this hands-on video here: https://youtu.be/UAISDrAHwkE
 
 
