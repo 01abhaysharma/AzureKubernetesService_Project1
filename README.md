@@ -82,22 +82,106 @@ Watch this hands-on video here: https://youtu.be/yufI4K4nk34
 
 # Step 3: Create Azure Container Registery and enable admin user
 
+1. Open the Azure Portal and create an Azure Container Registry. Click on Create a resource.
+2. Search Azure Container Registry, click on Container Registry and create.
+3. Provide Resource group name. Either create new Resource group or use existing one.
+4. Provide the name, Location, and SKU for the Azure Container Registry. Click on Review + Create.
+5. Validate the details for the Azure Container Registry and click on Create to create the Azure Container Registry.
+6. Navigate to the Azure Container Registry once it gets created. Click on the Access Keys.
+7. Enable the Admin User for the Azure Container Registry so that we can push the container images to the Azure Container Registry using the Admin user and password. Click on Enable.
+
+That's it! Azure container registry has been created and admin user has been enabled now.
+
 Watch this hands-on video here: https://youtu.be/fLM3xz5I3wM
 
 # Step 4: Push Containerized application to Azure Container Registry
+
+1. Launch the PowerShell window in Administrator mode, navigate to the folder where you have the Dockerfile, and the solution (.sln) file.
+2. Run the following Docker command to authenticate with the Azure Container Registry you have created to get successfully authenticated so that we can push the container image to the Azure Container Registry
+
+docker login [Registry name].azurecr.io
+
+3. Once you have successfully authenticated with the Azure Container Register, you need to tag the container image with the Azure Container Registry. 
+
+docker tag akswebapp:version1 [Registry name].azurecr.io/akswebapp:version1
+
+4. Push the image to the Azure Container Registry.
+
+docker push [Registry name].azurecr.io/akswebapp:version1
+
+5. Once the push command completes successfully, go to the Azure Container Registry in the Azure Portal and verify if the container image is present. 
+6. Navigate to the Azure Container Registry in the Azure Portal and click on Repositories.
+7. You will see that an image Repository named as mydemoapp exists.
+
+That's it! containerized application has been pushed to Azure container regostry.
 
 Watch this hands-on video here: https://youtu.be/T9_Ux886LBQ
 
 # Step 5: Azure Container Registry - Repo error - Unauthorized 401 - resolved.
 
+Once You push the application image to Azure container registry, You may notice "Unauthorozed error 401" in Repositories section. To resolve this issue get yourself assigned with Reader role under IAM section of Azure container registry.
+
 Watch this hands-on video here: https://youtu.be/v7dyscQvjLY
 
 # Step 6: Deploy to AKS Cluster using Kubectl command
 
-1. Create Kubernetes manifest (YAML)
-2. Integrate Azure Kubernetes Service with Azure Container Registry
-3. Deploy the manifest file to AKS cluster using Kubectl command
-   
+**1. Create Kubernetes manifest (YAML)**
+
+Define the desired state of the Kubernetes Cluster using a Manifest YAML file. The Manifest file defines the ReplicaSets, the number of replicas in the ReplicaSets, Service definitions, where to get the images from, and all other 
+necessary information for the Cluster.
+
+Kubernetes manifest (YAML) file with name deployment.yaml is created and attached in this repo. Please find it here: https://github.com/01abhaysharma/AzureKubernetesService_Project1/blob/main/deployment.yaml
+
+
+**2. Integrate Azure Kubernetes Service with Azure Container Registry**
+
+a. You need to be an Azure Account Administrator or Owner to be able to integrate the Azure Container Registry with Azure Kubernetes Service. 
+
+b. Launch the PowerShell window in Administrator mode, navigate to the folder where you have the Dockerfile, and the solution (.sln) file.
+
+c. select the subscription where you have created your Azure Kubernetes Service. Execute the following 
+Azure CLI command to select your subscription.
+
+login: az login.
+select subscription: az account set -s "Your Azure Subscription Name" 
+validate: az accoubt show
+
+d. Run the following command to integrate the Azure Container Registry with the Azure Kubernetes Service. 
+
+az aks update -n "Azure Kubernetes Service Name" -g "Azure Kubernetes Service Resource Group Name" --attach-acr "Azure Container Registry Name"
+
+e. Your Azure Kubernetes Service gets integrated with the Azure Container Registry.
+
+
+**3. Deploy the manifest file to AKS cluster using Kubectl command**
+
+a. Execute the following command to get the Azure Kubernetes Service credentials. Getting the Azure Kubernetes Service 
+credentials would help you interact with the Cluster using kubectl commands.
+
+az aks get-credentials --resource-group "Azure Kubernetes Service Resource Group Name" --name "Azure Kubernetes Service Name"
+
+b. Execute the following command to apply the manifest file to the Kubernetes Cluster.
+
+kubectl apply -f deployment.yaml
+
+c. The containerized application gets deployed to the Kubernetes Cluster.
+
+d. Now test the containerized application that we deployed to the Azure Kubernetes Service Cluster. Execute the following command to check if the Pods are running. This command would list out all the Pods running in the Cluster.
+
+kubectl get pods
+
+You will see three Pods running in the Cluster as we had specified 3 Replicas in the Kubernetes manifest file. 
+
+e. Execute the following command to get all the services running in the Kubernetes Cluster.
+
+kubectl get services
+
+You will see the Service named akswebapp as specified in the Kubernetes manifest file. 
+
+f. Copy the value of the EXTERNAL-IP for the Service akswebapp.
+
+g. Now browse the Service EXTERNAL-IP that you have copied. You will see that the application is up and running in the Azure Kubernetes Service Cluster.
+
+That's it! Your application is now deployed to Azure Kubernetes Service Cluster.
+
 Watch this hands-on video here: https://youtu.be/UAISDrAHwkE
-
-
