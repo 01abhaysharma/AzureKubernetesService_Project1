@@ -80,7 +80,7 @@ That's it! .Net core application has been created and containerized.
 
 Watch this hands-on video here: https://youtu.be/yufI4K4nk34
 
-# Step 3: Create Azure Container Registery and enable admin user
+# Step 3: Create Azure Container Registry and enable admin user
 
 1. Open the Azure Portal and create an Azure Container Registry. Click on Create a resource.
 2. Search Azure Container Registry, click on Container Registry and create.
@@ -130,7 +130,7 @@ Watch this hands-on video here: https://youtu.be/v7dyscQvjLY
 Define the desired state of the Kubernetes Cluster using a Manifest YAML file. The Manifest file defines the ReplicaSets, the number of replicas in the ReplicaSets, Service definitions, where to get the images from, and all other 
 necessary information for the Cluster.
 
-Kubernetes manifest (YAML) file with name deployment.yaml is created and attached in this repo. Please find it here: https://github.com/01abhaysharma/AzureKubernetesService_Project1/blob/main/deployment.yaml
+Kubernetes manifest (YAML) file with name deployment.yaml is created and attached in the repo below: https://github.com/01abhaysharma/AzureKubernetesService_Project1/blob/main/deployment.yaml
 
 
 **2. Integrate Azure Kubernetes Service with Azure Container Registry**
