@@ -59,7 +59,7 @@ Watch this hands-on video here: https://youtu.be/rAjS0wGuDwc
 8. The project folder opens up in the Windows explorer. You can see the Docker file in this folder.
 9. Copy this Docker file, move one folder level up to where the project solution file (.sln) is present, and paste the Docker file in that folder.
 10. Now launch the PowerShell window in Administrator mode, navigate to the folder where you have the Dockerfile, and the solution (.sln) file.
-11. Run the following Docker command to containerize the application. This command would create a Docker image named as mydemoapp with a tag as version1.
+11. Run the following Docker command to containerize the application. This command would create a Docker image named as akswebapp with a tag as version1.
 
     docker build -t akswebapp:version1 .
 
@@ -101,7 +101,7 @@ Watch this hands-on video here: https://youtu.be/fLM3xz5I3wM
 
 docker login [Registry name].azurecr.io
 
-3. Once you have successfully authenticated with the Azure Container Register, you need to tag the container image with the Azure Container Registry. 
+3. Once you have successfully authenticated with the Azure Container Registry, you need to tag the container image with the Azure Container Registry. 
 
 docker tag akswebapp:version1 [Registry name].azurecr.io/akswebapp:version1
 
@@ -111,15 +111,15 @@ docker push [Registry name].azurecr.io/akswebapp:version1
 
 5. Once the push command completes successfully, go to the Azure Container Registry in the Azure Portal and verify if the container image is present. 
 6. Navigate to the Azure Container Registry in the Azure Portal and click on Repositories.
-7. You will see that an image Repository named as mydemoapp exists.
+7. You will see that an image Repository named as akswebapp exists.
 
 That's it! containerized application has been pushed to Azure container regostry.
 
 Watch this hands-on video here: https://youtu.be/T9_Ux886LBQ
 
-# Step 5: Azure Container Registry - Repo error - Unauthorized 401 - resolved.
+# Step 5: Azure Container Registry - Repo error - Unauthorized 401 - resolved
 
-Once You push the application image to Azure container registry, You may notice "Unauthorozed error 401" in Repositories section. To resolve this issue get yourself assigned with Reader role under IAM section of Azure container registry.
+Once You push the application image to Azure container registry, You may notice "Unauthorized error 401" in Repositories section. To resolve this issue get yourself assigned with Reader role under IAM section of Azure container registry.
 
 Watch this hands-on video here: https://youtu.be/v7dyscQvjLY
 
@@ -130,7 +130,7 @@ Watch this hands-on video here: https://youtu.be/v7dyscQvjLY
 Define the desired state of the Kubernetes Cluster using a Manifest YAML file. The Manifest file defines the ReplicaSets, the number of replicas in the ReplicaSets, Service definitions, where to get the images from, and all other 
 necessary information for the Cluster.
 
-Kubernetes manifest (YAML) file with name deployment.yaml is created and attached in the repo below: https://github.com/01abhaysharma/AzureKubernetesService_Project1/blob/main/deployment.yaml
+Kubernetes manifest (YAML) file with name deployment.yaml is created in the repo below: https://github.com/01abhaysharma/AzureKubernetesService_Project1/blob/main/deployment.yaml
 
 
 **2. Integrate Azure Kubernetes Service with Azure Container Registry**
@@ -142,9 +142,9 @@ b. Launch the PowerShell window in Administrator mode, navigate to the folder wh
 c. select the subscription where you have created your Azure Kubernetes Service. Execute the following 
 Azure CLI command to select your subscription.
 
-login: az login.
-select subscription: az account set -s "Your Azure Subscription Name" 
-validate: az accoubt show
+Login: az login.
+Select subscription: az account set -s "Your Azure Subscription Name" 
+Validate: az account show
 
 d. Run the following command to integrate the Azure Container Registry with the Azure Kubernetes Service. 
 
