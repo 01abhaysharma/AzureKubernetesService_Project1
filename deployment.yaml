@@ -15,8 +15,8 @@ spec:
         app: akswebapp
     spec:
       containers:
-      - name: sample-app
-        image: akslearning01.azurecr.io/akswebapp:version1
+      - name: akswebapp
+        image: <registry name>.azurecr.io/akswebapp:version1
         ports:
         - containerPort: 80
 
